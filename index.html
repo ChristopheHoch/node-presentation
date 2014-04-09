@@ -83,6 +83,39 @@
                 </section>
                 <section>
                     <section>
+                        <h2>Gestion des modules</h2>
+                        <p>Node permet d'importer facilement des modules externes pouvant être:</p>
+                        <ul>
+                            <li>composants de node</li>
+                            <li>modules externes (installés via NPM)</li>
+                            <li>fichiers du même projet</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <p>La commande pour importer un module est la suivante:</p>
+                        <pre><code>// Composant http de node
+var http = require('http');
+
+// Module Mongoose installé via NPM
+var mongoose = require('mongoose')
+
+// Fichier users.js situé au même niveau dans l'arborescence
+var user = require('./users')</code></pre>
+                    </section>
+                    <section>
+                        <p>Pour créer un module, il suffit d'exporter un objet...</p>
+                        <pre><code>// Fichier users.js
+exports.find = function(param) {
+    ...
+};</code></pre>
+                        <pre><code>// Fichier app.js
+var users = require('./users');
+
+users.find(42);</code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
                         <h2>Node Package Manager (NPM)</h2>
                         <p>Gestion puissante des dépendances</p>
                         <p>Recherche simplifiée via <a href="http://nodetoolbox.com">The Node Toolbox</a></p>
