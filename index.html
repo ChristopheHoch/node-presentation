@@ -40,23 +40,41 @@
                 <section>
                     <section>
                         <h2>Qu'est-ce que Node ?</h2>
+                        <p class="fragment">Créé en 2009 par Ryan Dahl</p>
+                        <p class="fragment">Construit sur le moteur de rendu JavaScript de Chrome (V8)</p>
+                        <p class="fragment">Repose sur unn bonne gestion des évenements</p>
+                        <p class="fragment">Utilisation intensive de code asynchrone</p>
+                        <p class="fragment">Mono-Thread supportant un très grand nombre de connections concurrentes</p>
                     </section>
-                    <section>
-                        <h2>...</h2>
-                        <p>V8</p>
-                        <p>asynchronicité I/O</p>
-                        <p>mono-thread</p>
-                    </section>
-                    <section>
-                        <h2>Historique</h2>
-                        <p>Créé en 2009</p>
-                    </section>
+                </section>
+                <section>
+                    <h2>Atouts et points forts</h2>
+                    <p>Utilisation de JavaScript de bout en bout d'un projet</p>
+                    <p>Rapide et facile d'utilisation</p>
+                    <p>Facilement scalable horizontalement</p>
+                    <p>Communauté important</p>
+                </section>
+                <section>
+                    <h2>Points faibles</h2>
+                    <p>Mauvaises performances pour les application necessitant beaucoup de CPU</p>
+                    <p>Moins facile à utiliser avec une base de donnée relationnelle</p>
+                    <p>Peu structuré (mais facilement structurable en modules)</p>
+                </section>
+                <section>
+                    <h2>Ils l'utilisent en production...</h2>
+                    <ul>
+                        <li>Paypal</li>
+                        <li>Wallmart</li>
+                        <li>LinkedIn</li>
+                        <li>Groupon</li>
+                    </ul>
+                    <p>... et font profiter la communauté de leur retour d'experience ainsi que de solutions open source</p>
                 </section>
                 <section>
                     <h2>A quoi peut-il être utilisé ?</h2>
                     <p>Chat</p>
-                    <p>RESTful API</p>
-                    <p>Alimenter des Queue de requêtes</p>
+                    <p>API RESTful</p>
+                    <p>Alimenter de queues</p>
                     <p>Proxy</p>
                 </section>
                 <section>
@@ -64,23 +82,95 @@
                     <p>Traitement nécessitant beaucoup de ressource CPU</p>
                 </section>
                 <section>
-                    <h2>Node Package Manager (NPM)</h2>
+                    <section>
+                        <h2>Node Package Manager (NPM)</h2>
+                        <p>Gestion puissante des dépendances</p>
+                        <p>Recherche simplifiée via <a href="http://nodetoolbox.com">The Node Toolbox</a></p>
+                        <p>+68 000 paquets</p>
+                        <p>+5 000 000 téléchargements par jour</p>
+                        <p>Configurable grâce à un fichier JSON</p>
+                    </section>
+                    <section>
+                        <pre><code>{
+  "name": "simple-blog",
+  "description": "A simple blog in node",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "grunt"
+  },
+  "dependencies": {
+    "express": "~3.4.8",
+    "mongoose": ">=3.8"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}</code></pre>
+                    </section>
                 </section>
                 <section>
-                    <h2>Des exemples en production</h2>
-                    <ul>
-                        <li>Paypal</li>
-                        <li>Groupon</li>
-                        <li>Wallmart</li>
-                        <li>Paypal</li>
-                        <li>LinkedIn</li>
-                    </ul>
+                    <section>
+                        <h2>Environnement</h2>
+                        <p>Node dispose maintenant d'outils puissants pous faciliter et fiabiliser le dévelopement</p>
+                    </section>
+                    <section>
+                        <h3>Aide au developement</h3>
+                        <p>Debugger: Node Inspector</p>
+                        <p>Surveillance des source et redemarage du serveur: Nodemon</p>
+                    </section>
+                    <section>
+                        <h3>Frameworks de tests</h3>
+                        <p>Mocha + Chai</p>
+                        <p>QUnit</p>
+                        <p>Jasmine</p>
+                    </section>
+                    <section>
+                        <h3>Ordonnanceur de tâches</h3>
+                        <p>Grunt</p>
+                        <p>Gulp</p>
+                    </section>
+                    <section>
+                        <h3>Analyseur de code</h3>
+                        <p>Syntaxe: JSHint / ESLint / JSLint</p>
+                        <p>Complexité: Plato</p>
+                        <p>Couverture de test: Blanket</p>
+                    </section>
                 </section>
                 <section>
-                    <h2>Express.js</h2>
-                </section>
-                <section>
-                    <h2>Socket.io</h2>
+                    <section>
+                        <h2>Express</h2>
+                        <p>Framerwork le plus utilisé avec Node</p>
+                        <p>Construit sur le framework Connect</p>
+                        <p>Très Modulable</p>
+                        <p>Permet l'utililisation de templates</p>
+                    </section>
+                    <section>
+                        <h2>Middlewares</h2>
+                        <p>Fonctions utilisés par Express pouvant répondre à la requête ou transmettre à la fonction suivante</p>
+                        <pre><code>app.use(function(err, req, res, next){
+  if(!req.headers['token']) {
+    return res.send(401)
+  }
+  next();
+});</code></pre>
+                    </section>
+                    <section>
+                        <h2>Routes</h2>
+                        <pre><code>// Requête GET
+app.get('/resource', function (req, res, next){ ... });
+app.get('/resource/:id', function (req, res, next){ ... });
+
+// Requête POST
+app.post('/resource', function (req, res, next){ ... });
+
+// Requête PUT
+app.put('/resource/:id', function (req, res, next){ ... });
+
+// Requête DELETE
+app.delete('/resource/:id', function (req, res, next){ ... });</code></pre>
+                        <p>Attention, l'ordre des routes est importants</p>
+                    </section>
                 </section>
             </div>
 
